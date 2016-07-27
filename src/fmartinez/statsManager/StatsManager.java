@@ -3,8 +3,8 @@ package fmartinez.statsManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -13,7 +13,7 @@ import javax.xml.bind.Unmarshaller;
 public class StatsManager {
 
 	private Results results;
-	private TreeMap<String, Team> season;
+	private HashMap<String, Team> season;
 	
 	public StatsManager() {
 		results = new Results();
@@ -32,8 +32,8 @@ public class StatsManager {
 		}
 	}
 	
-	public void computeSeason() {		
-		season = new TreeMap<String, Team>();
+	private void computeSeason() {		
+		season = new HashMap<String, Team>();
 		for( MatchResult mr : results.getResults() ){
 			String local = mr.getLocal();
 			if( !season.containsKey(local) ){
